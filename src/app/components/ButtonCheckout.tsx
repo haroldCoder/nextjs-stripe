@@ -17,9 +17,8 @@ export default function ButtonCheckout({priceID}: props) {
                     "Content-type": "application/json"
                 }
             })
-            const dt = await data.json()
-            console.log(dt);
-            
+            const {url} = await data.json()
+            window.location.href = url;
         }}
     >Buy</button>
   )

@@ -14,7 +14,7 @@ export class ProductStripe {
     }
 
     createSesion = async(mode: Stripe.Checkout.SessionCreateParams.Mode, priceid: string) =>{
-        await this.stripe.checkout.sessions.create({
+        const session = await this.stripe.checkout.sessions.create({
             mode: mode,
             payment_method_types: ['card'],
             success_url: "https://localhost:3000/success",
@@ -26,5 +26,8 @@ export class ProductStripe {
                 }
             ]
         })
+
+        return session.url;
+        
     }
 }
