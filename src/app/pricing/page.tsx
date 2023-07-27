@@ -1,5 +1,6 @@
 import React from 'react'
 import { ProductStripe } from '../ProductStripe/ProductStripe'
+import ButtonCheckout from '../components/ButtonCheckout';
 
 async function Page() {
     const prices = await new ProductStripe(process.env.STRIPE_SECRET_KEY!);
@@ -11,11 +12,11 @@ async function Page() {
             </header>
             <div className='flex justify-evenly'>
                 {
-                    (await prices.getProducts()).map(e => (
-                        <div className='bg-gradient-to-b text-center w-[15%] flex flex-wrap justify-between h-[20vh] flex-col from-gray-500 to-gray-900 rounded-md p-4 text-white' key={e.id}>
+                    (await prices.getProducts()).sort((a, b)=>a.unit_amount! - b.unit_amount!).map(e => (
+                        <div className='bg-gradient-to-b text-center w-[15%] flex flex-wrap justify-between h-[30vh] flex-col from-gray-500 to-gray-900 rounded-md p-4 text-white' key={e.id}>
                             <h2>{e.nickname}</h2>
-                            <h3>{e.unit_amount! / 100} {e.currency.toUpperCase()}</h3>
-                            <button className='bg-blue-700 px-5 py-2 rounded-md hover:bg-blue-600'>Buy</button>
+                            <h3 className='text-3xl font-bold text-gray-400'>{e.unit_amount! / 100}$</h3>
+                            <ButtonCheckout />
                         </div>
                     ))
                 }
