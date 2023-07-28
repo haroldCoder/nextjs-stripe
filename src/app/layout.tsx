@@ -2,8 +2,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
-import Nav from './nav/page'
-import koderb from '../../assets/imgs/koderblue.png'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,8 +20,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/png" href="/koderblue.png" />
       </head>
-      <html lang="en" className='flex flex-col-reverse'>
-        <Nav />
+      <html lang="en" className='flex flex-col'>
         <body className={inter.className}>{children}</body>
       </html>
     </ClerkProvider>

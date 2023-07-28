@@ -6,7 +6,7 @@ import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 
 export default function Nav() {
   return (
-    <div className='p-4 pl-10 w-100 bg-gray-900 flex justify-between items-center'>
+    <div className='p-4 pl-10 w-100 flex justify-between items-center'>
         <section className='flex gap-x-8'>
             <HomeRoundedIcon className='text-white hover:text-blue-600 cursor-pointer' style={{fontSize: "30px"}} />
             <LoyaltyRoundedIcon className='text-white hover:text-blue-600 cursor-pointer' style={{fontSize: "30px"}} />
