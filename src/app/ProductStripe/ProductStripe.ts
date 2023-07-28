@@ -17,8 +17,8 @@ export class ProductStripe {
         const session = await this.stripe.checkout.sessions.create({
             mode: mode,
             payment_method_types: ['card'],
-            success_url: "https://localhost:3000/success",
-            cancel_url: "https://localhost:3000/pricing",
+            success_url: "http://localhost:3000/success",
+            cancel_url: "http://localhost:3000",
             line_items: [
                 {
                     price: priceid,

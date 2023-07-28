@@ -2,14 +2,11 @@ import React from 'react'
 import { ProductStripe } from '../ProductStripe/ProductStripe'
 import ButtonCheckout from '../components/ButtonCheckout';
 
-async function Page() {
+async function Pricing() {
     const prices = await new ProductStripe(process.env.STRIPE_SECRET_KEY!);
 
     return (
-        <div className='p-4'>
-            <header>
-                <h1 className='text-gray-400'>Pricing</h1>
-            </header>
+        <div className='p-7' id='pricing'>
             <div className='mt-8 flex justify-evenly'>
                 {
                     (await prices.getProducts()).sort((a, b)=>a.unit_amount! - b.unit_amount!).map(e => (
@@ -26,4 +23,4 @@ async function Page() {
     )
 }
 
-export default Page
+export default Pricing
