@@ -3,7 +3,7 @@ import { ProductStripe } from '../ProductStripe/ProductStripe'
 import ButtonCheckout from '../components/ButtonCheckout';
 
 async function Pricing() {
-    const prices = await new ProductStripe(process.env.STRIPE_SECRET_KEY!);
+    const prices = new ProductStripe(process.env.STRIPE_SECRET_KEY!);
 
     return (
         <div className='p-7' id='pricing'>
