@@ -12,21 +12,46 @@ export class ProductStripe {
         return prices;
     }
 
-    createSesion = async(mode: Stripe.Checkout.SessionCreateParams.Mode, priceid: string) =>{
-        const session = await this.stripe.checkout.sessions.create({
-            mode: mode,
-            payment_method_types: ['card'],
-            success_url: "http://localhost:3000/success",
-            cancel_url: "http://localhost:3000",
-            line_items: [
-                {
-                    price: priceid,
-                    quantity: 1
-                }
-            ]
-        })
+    createSesion = async(mode: Stripe.Checkout.SessionCreateParams.Mode, priceid?: string, name?: string, unit?: number, user?: string) =>{
+        let session : Stripe.Response<Stripe.Checkout.Session>;
+        
+        if(mode == "subscription"){
+            session = await this.stripe.checkout.sessions.create({
+                mode: mode,
+                payment_method_types: ['card'],
+                success_url: "/success",
+                cancel_url: "/",
+                line_items: [
+                    {
+                        price: priceid,
+                        quantity: 1
+                    }
+                ],
+            })
+        }
+        else if(mode == "payment"){
+            session = await this.stripe.checkout.sessions.create({
+                mode: mode,
+                payment_method_types: ["card"],
+                success_url: "/success",
+                cancel_url: "/",
+                line_items: [
+                    {
+                        price_data: {
+                            currency: "usd",
+                            product_data: {
+                                name: name || "",
+                                description: user
+                            },
+                            unit_amount: unit
+                        }
+                    }
+                ]
+            })
+        }
+        
 
-        return session.url;
+        return session!.url;
         
     }
 }
