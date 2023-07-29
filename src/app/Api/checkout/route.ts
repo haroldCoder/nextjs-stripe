@@ -1,4 +1,4 @@
-import { ProductStripe } from "@/app/ProductStripe/ProductStripe";
+import { ProductStripe } from "@/app/api/ProductStripe/ProductStripe";
 import { NextResponse } from "next/server";
 
 

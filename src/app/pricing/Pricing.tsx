@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProductStripe } from '../ProductStripe/ProductStripe'
+import { ProductStripe } from '../api/ProductStripe/ProductStripe'
 import ButtonCheckout from '../components/ButtonCheckout';
 
 async function Pricing() {
