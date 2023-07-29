@@ -1,3 +1,4 @@
+"use client"
 import Nav from './nav/Nav'
 import Jumbotron from './jumbotron/Jumbotron'
 import Pricing from './pricing/Pricing'
