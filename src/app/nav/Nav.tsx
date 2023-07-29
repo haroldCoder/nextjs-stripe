@@ -12,7 +12,7 @@ export default function Nav() {
         <section className='flex gap-x-12'>
             <a href="#jumbotron"><HomeRoundedIcon className='text-white hover:text-blue-600 cursor-pointer' style={{fontSize: "30px"}} /></a>
             <a href="#pricing"><LoyaltyRoundedIcon className={`text-white  hover:text-blue-600 cursor-pointer`} style={{fontSize: "30px"}} /></a>
-            <InfoRoundedIcon className='text-white hover:text-blue-600 cursor-pointer' style={{fontSize: "30px"}} />
+            <a href="#about"><InfoRoundedIcon className='text-white hover:text-blue-600 cursor-pointer' style={{fontSize: "30px"}} /></a>
         </section>
         <section>
             <DashboardPage />
