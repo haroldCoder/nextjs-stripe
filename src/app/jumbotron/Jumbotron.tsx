@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState, useRef } from 'react'
-import { Canvas } from "@react-three/fiber";
+import { Canvas } from "react-three-fiber";
 import { useGLTF, Stage, PresentationControls } from "@react-three/drei";
 import { useFrame } from 'react-three-fiber';
 
@@ -11,8 +11,24 @@ function Model(props: any) {
         if (modelRef.current) {
           modelRef.current.rotation.y += 0.002; 
         }
-      });
-    return <primitive object={scene} ref={modelRef} />
+    });
+
+    const disableShadows = (object: any) => {
+        object.castShadow = false;
+        object.receiveShadow = false;
+        if (object.children) {
+          object.children.forEach(disableShadows);
+        }
+      };
+    
+      if (modelRef.current) {
+        disableShadows(modelRef.current);
+      }
+
+    return <>
+        <primitive object={scene} ref={modelRef} />
+        <directionalLight castShadow={false} />
+    </>
 }
 
 export default function Jumbotron() {
@@ -44,7 +60,7 @@ export default function Jumbotron() {
                     </p>
                 </section> 
                 <section>
-                    <Canvas dpr={[1,2]} shadows camera={{ fov: 45 }} style={{width: "40vw", height: "50vh", marginTop: "3%", position: "sticky", left: "60%"}}>
+                    <Canvas shadows={"percentage"} suppressHydrationWarning dpr={[1,2]} camera={{ fov: 45 }} style={{width: "40vw", height: "50vh", marginTop: "3%", position: "sticky", left: "60%"}}>
                         <PresentationControls speed={1.5} global zoom={.5} polar={[-0.1, Math.PI / 4]}>
                             <Stage environment={"sunset"}>
                             <Model scale={0.01} rotation-y={2} />
