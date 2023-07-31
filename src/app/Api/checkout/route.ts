@@ -3,9 +3,9 @@ import { NextResponse } from "next/server";
 
 
 export const POST = async(request: Request) =>{
-    const {priceid, api_key, mode, name, unit} = await request.json()
+    const {priceid} = await request.json()
     
-    const ps = await new ProductStripe(api_key ? api_key : process.env.STRIPE_SECRET_KEY!).createSesion(mode ? mode : 'subscription', priceid, name, unit)
+    const ps = await new ProductStripe(process.env.STRIPE_SECRET_KEY!).createSesion('subscription', priceid)
 
     return NextResponse.json({
         url: ps
