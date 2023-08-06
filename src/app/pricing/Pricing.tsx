@@ -1,6 +1,6 @@
 import React from 'react'
 import ButtonCheckout from '../components/ButtonCheckout';
-import { getPrices } from '@/app/api/prices/route';
+import { getPrices } from '../../../public/api/prices/route';
 
 async function Pricing() {
 
