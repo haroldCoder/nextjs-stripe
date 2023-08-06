@@ -12,3 +12,8 @@ export const GET = async() => {
     })
 }
 
+export const getPrices = async() =>{
+    const prices : Array<any> = await (await fetch(`https://stripe-node-microservice.vercel.app/api/stripe/${process.env.STRIPE_SECRET_KEY!}`)).json()
+    return prices;
+}
+

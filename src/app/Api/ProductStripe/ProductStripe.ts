@@ -15,7 +15,6 @@ export class ProductStripe {
     createSesion = async(mode: Stripe.Checkout.SessionCreateParams.Mode, priceid?: string) =>{
         let session : Stripe.Response<Stripe.Checkout.Session> = await this.stripe.checkout.sessions.create({
             mode: mode,
-            payment_method_types: ['card'],
             success_url: "https://dashboard.stripe.com/",
             cancel_url: "https://dashboard.stripe.com/",
             line_items: [
